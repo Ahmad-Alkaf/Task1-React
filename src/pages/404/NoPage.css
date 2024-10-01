@@ -1,0 +1,12 @@
+.no-page {
+	position: fixed;
+	margin: auto;
+	max-width: 100vw;
+	max-height: 100vh;
+	width: fit-content;
+	height: fit-content;
+	inset: 0px;
+}
+.text-gray {
+	color: #444;
+}
