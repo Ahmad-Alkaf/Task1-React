@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Layout from './pages/Layout/Layout';
+import Layout from './Layout/Layout';
 import Users from './pages/Users/Users';
 import Products from './pages/Products/Products';
 import NoPage from './pages/404/NoPage';
