@@ -7,6 +7,7 @@ const TableContextProvider = ({children}: PropsWithChildren) => {
 	const [limit, setLimit] = useState<number>(5);
 	const [skip, setSkip] = useState<number>(0);
 	const [search, setSearch] = useState<string>('');
+	const [loading, setLoading] = useState<boolean>(true);
 	const [data, setData] = useState<
 		(string | number | boolean | undefined | null)[][]
 	>([]);
@@ -23,7 +24,9 @@ const TableContextProvider = ({children}: PropsWithChildren) => {
 				data,
 				setData,
 				columns,
-				setColumns
+				setColumns,
+				loading,
+				setLoading,
 			}}>
 			{children}
 		</TableContext.Provider>

@@ -4,24 +4,35 @@ import {ITableContext} from '../../types/ITableContext';
 import axios, {AxiosRequestConfig} from 'axios';
 import {UserGetAllResponse} from '../../types/Dummyjson';
 import Table from '../../components/Table/Table';
+import Pagination from '../../components/Table/Pagination';
+import Filters from '../../components/Table/Filters/Filters';
 
 const UsersTable = () => {
-	const {setColumns, setData} = useContext(TableContext) as ITableContext;
-	setColumns([
-		'First Name',
-		'Last Name',
-		'Maiden Name',
-		'Age',
-		'Gender',
-		'Email',
-		'Username',
-		'BloodGroup',
-		'EyeColor'
-	]);
+	const {setColumns, setData, limit, skip, setLoading} = useContext(
+		TableContext
+	) as ITableContext;
 	useEffect(() => {
+		setColumns([
+			'First Name',
+			'Last Name',
+			'Maiden Name',
+			'Age',
+			'Gender',
+			'Email',
+			'Username',
+			'BloodGroup',
+			'EyeColor'
+		]);
+	}, []);
+	useEffect(() => {
+		setLoading(true);
+
 		axios
 			.get<any, AxiosRequestConfig<UserGetAllResponse>>(
-				'https://dummyjson.com/users'
+				'https://dummyjson.com/users',
+				{
+					params: {limit, skip}
+				}
 			)
 			.then(response => {
 				setData(
@@ -38,10 +49,17 @@ const UsersTable = () => {
 					]) ?? []
 				);
 				console.log(response.data);
+				setLoading(false);
 			})
 			.catch(console.error);
-	}, []);
-	return <Table />;
+	}, [ limit, skip]);
+	return (
+		<>
+			<Filters />
+			<Table />
+			<Pagination />
+		</>
+	);
 };
 
 export default UsersTable;

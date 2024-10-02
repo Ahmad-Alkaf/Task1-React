@@ -9,5 +9,7 @@ export interface ITableContext {
 	setSearch: React.Dispatch<ITableContext['search']>;
 	data: (string | number | boolean | undefined | null)[][];
 	setData: React.Dispatch<ITableContext['data']>;
+	loading:boolean;
+	setLoading:React.Dispatch<ITableContext['loading']>;
 }
 
