@@ -1,12 +1,9 @@
-import {LegacyRef, useEffect} from 'react';
+import {useEffect} from 'react';
 
 /**
  * This Hook can be used for detecting clicks outside the Opened Dropdown menu
  */
-export default function useClickOutside(
-	ref: any,
-	onClickOutside: () => any
-) {
+export default function useClickOutside(ref: any, onClickOutside: () => any) {
 	useEffect(() => {
 		/**
 		 * Invoke Function onClick outside of element

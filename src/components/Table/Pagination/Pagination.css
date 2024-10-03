@@ -1,0 +1,17 @@
+.pagination-ul {
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+}
+
+.pagination-li {
+	list-style-type: none;
+	padding: 0.5rem 0.7rem;
+}
+
+.pagination-li:hover {
+	text-decoration: underline;
+}
+li .selected-page-btn{
+	transform: translateY(-8px);
+}

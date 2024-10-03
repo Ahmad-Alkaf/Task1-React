@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import './DropdownList.css';
 import ArrowDown from '../icons/ArrowDown';
-import useClickOutside from '../../utilities/ClickOutsideHook';
+import useClickOutside from '../../utilities/hooks/useClickOutside';
 const DropdownList = <T extends number | string>({
 	item,
 	list,

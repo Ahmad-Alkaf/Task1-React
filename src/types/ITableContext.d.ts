@@ -5,6 +5,8 @@ export interface ITableContext {
 	setLimit: React.Dispatch<ITableContext['limit']>;
 	skip: number;
 	setSkip: React.Dispatch<ITableContext['skip']>;
+	total:number;
+	setTotal:React.Dispatch<ITableContext['total']>;
 	search: string;
 	setSearch: React.Dispatch<ITableContext['search']>;
 	data: (string | number | boolean | undefined | null)[][];

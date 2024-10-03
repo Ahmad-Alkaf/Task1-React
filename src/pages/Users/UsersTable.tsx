@@ -4,13 +4,12 @@ import {ITableContext} from '../../types/ITableContext';
 import axios, {AxiosRequestConfig} from 'axios';
 import {UserGetAllResponse} from '../../types/Dummyjson';
 import Table from '../../components/Table/Table';
-import Pagination from '../../components/Table/Pagination';
+import Pagination from '../../components/Table/Pagination/Pagination';
 import Filters from '../../components/Table/Filters/Filters';
 
 const UsersTable = () => {
-	const {setColumns, setData, limit, skip, setLoading, filter} = useContext(
-		TableContext
-	) as ITableContext;
+	const {setColumns, setData, limit, skip, setTotal, setLoading, filter} =
+		useContext(TableContext) as ITableContext;
 	useEffect(() => {
 		setColumns([
 			'First Name',
@@ -58,9 +57,10 @@ const UsersTable = () => {
 						v.eyeColor,
 						v.birthDate,
 						v.phone,
-						v.role,
+						v.role
 					]) ?? []
 				);
+				setTotal(response.data?.total ?? 0);
 				console.log(response.data);
 				setLoading(false);
 			})

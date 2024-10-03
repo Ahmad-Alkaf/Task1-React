@@ -1,5 +1,5 @@
-import React, {PropsWithChildren, useContext, useRef, useState} from 'react';
-import useClickOutside from '../utilities/ClickOutsideHook';
+import React, {PropsWithChildren, useRef} from 'react';
+import useClickOutside from '../utilities/hooks/useClickOutside';
 
 const DropdownSearch = ({
 	search,
@@ -7,7 +7,7 @@ const DropdownSearch = ({
 	children,
 	isOpen,
 	setIsOpen,
-	date=false,
+	date = false
 }: PropsWithChildren<{
 	search: string;
 	setSearch: React.Dispatch<string>;
