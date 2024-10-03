@@ -1,13 +1,10 @@
 import React, {useContext, useMemo} from 'react';
-import TableHead from './TableHead';
-import TableRow from './TableRow';
-import TableCell from './TableCell';
-import TableBody from './TableBody';
-import {TableContext} from './TableContext';
-import {ITableContext} from '../../types/ITableContext';
-
+import {TableContext} from '../TableContext';
+import {ITableContext} from '../../../types/ITableContext';
+import TableCell from './TableCell/TableCell';
+import './Table.css';
 const Table = () => {
-	const {columns, data, skip, limit, search, loading} = useContext(
+	const {columns, data, search, loading} = useContext(
 		TableContext
 	) as ITableContext;
 	const filteredData = useMemo(() => {
@@ -18,35 +15,39 @@ const Table = () => {
 		);
 	}, [data, search]);
 	return (
-		<>
-			<table>
-				<TableHead>
-					<TableRow>
+		<div style={{overflowX: 'auto'}}>
+			<table
+				style={{
+					minWidth: '100%',
+					borderCollapse: 'collapse'
+				}}>
+				<thead>
+					<tr>
 						{columns.map((v, i) => (
 							<TableCell head key={i}>
 								{v}
 							</TableCell>
 						))}
-					</TableRow>
-				</TableHead>
-				<TableBody>
+					</tr>
+				</thead>
+				<tbody>
 					{filteredData.map((v, i) => (
-						<TableRow key={i}>
+						<tr key={i} className="hover-table-row">
 							{v.map((value, index) => (
 								<TableCell key={index + 'cell'}>
 									{value}
 								</TableCell>
 							))}
-						</TableRow>
+						</tr>
 					))}
-				</TableBody>
+				</tbody>
 			</table>
 			{loading && filteredData.length === 0
 				? 'Loading...'
 				: filteredData.length === 0
 					? 'Not Found!'
 					: ''}
-		</>
+		</div>
 	);
 };
 

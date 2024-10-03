@@ -3,9 +3,10 @@ import {TableContext} from '../../components/Table/TableContext';
 import {ITableContext} from '../../types/ITableContext';
 import axios, {AxiosRequestConfig} from 'axios';
 import {UserGetAllResponse} from '../../types/Dummyjson';
-import Table from '../../components/Table/Table';
 import Pagination from '../../components/Table/Pagination/Pagination';
 import Filters from '../../components/Table/Filters/Filters';
+import SearchInColumn from '../../components/Table/Filters/Search/SearchInColumn';
+import Table from '../../components/Table/TableStructure/Table';
 
 const UsersTable = () => {
 	const {setColumns, setData, limit, skip, setTotal, setLoading, filter} =
@@ -68,7 +69,12 @@ const UsersTable = () => {
 	}, [limit, skip, filter]);
 	return (
 		<>
-			<Filters />
+			<Filters>
+				<SearchInColumn title="Name" property="firstName" />
+				<SearchInColumn title="Email" property="email" />
+				<SearchInColumn date title="Birth Date" property="birthDate" />
+				<SearchInColumn title="Gender" property="gender" />
+			</Filters>
 			<Table />
 			<Pagination />
 		</>

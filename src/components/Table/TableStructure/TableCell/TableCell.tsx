@@ -1,5 +1,5 @@
 import React, {PropsWithChildren} from 'react';
-
+import './TableCell.css';
 const TableCell = ({
 	children,
 	head = false
@@ -15,11 +15,13 @@ const TableCell = ({
 	return (
 		<>
 			{head ? (
-				<th style={{textTransform: 'uppercase'}}>
+				<th className="table-cell-header">
 					{isEmpty(children) ? 'N/A' : children}
 				</th>
 			) : (
-				<td>{isEmpty(children) ? 'N/A' : children}</td>
+				<td className="table-cell-data">
+					{isEmpty(children) ? 'N/A' : children}
+				</td>
 			)}
 		</>
 	);
