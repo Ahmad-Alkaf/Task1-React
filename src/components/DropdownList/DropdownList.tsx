@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
-import './Dropdown.css';
-const Dropdown = <T extends number | string>({
+import React, {useRef, useState} from 'react';
+import './DropdownList.css';
+import ArrowDown from '../icons/ArrowDown';
+import useClickOutside from '../../utilities/ClickOutsideHook';
+const DropdownList = <T extends number | string>({
 	item,
 	list,
 	setItem
@@ -10,8 +12,10 @@ const Dropdown = <T extends number | string>({
 	list: T[];
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const wrapperRef = useRef('menu');
+	useClickOutside(wrapperRef, () => setIsOpen(false));
 	return (
-		<div className="relative">
+		<div ref={wrapperRef as any} className="relative">
 			<button
 				aria-label="Toggle dropdown"
 				aria-haspopup="true"
@@ -20,17 +24,12 @@ const Dropdown = <T extends number | string>({
 				onClick={() => setIsOpen(!isOpen)}
 				className="dropdown-btn">
 				<span>{item}</span>
-				<span
-					className="rectangle"
+				<ArrowDown
 					style={{
-						rotate: (isOpen ? 180 : 0) + 'deg',
-						paddingLeft: (isOpen ? 0 : 0.6) + 'rem',
-						paddingRight: (isOpen ? 0.6 : 0) + 'rem',
-						marginTop: (isOpen ? 0 : -4) + 'px',
-						marginBottom: (isOpen ? 0 : 4) + 'px'
-					}}>
-					&#128899;
-				</span>
+						rotate: (isOpen ? 180 : 0) + 'deg'
+					}}
+					size={15}
+				/>
 			</button>
 			{isOpen && (
 				<div aria-label="Dropdown menu" className="dropdown">
@@ -59,4 +58,4 @@ const Dropdown = <T extends number | string>({
 	);
 };
 
-export default Dropdown;
+export default DropdownList;

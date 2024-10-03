@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Dropdown from '../../Dropdown/Dropdown';
+import DropdownList from '../../DropdownList/DropdownList';
 import {TableContext} from '../TableContext';
 import {ITableContext} from '../../../types/ITableContext';
 
@@ -8,8 +8,8 @@ const Entries = () => {
 		TableContext
 	) as ITableContext;
 	return (
-		<div className="flex">
-			<Dropdown
+		<div className="flex" style={{paddingRight:'0.8rem'}}>
+			<DropdownList
 				setItem={item => {
 					setData([]);
 					setLimit(item);
@@ -17,7 +17,7 @@ const Entries = () => {
 				item={limit}
 				list={[5, 10, 20, 50]}
 			/>
-			Entries
+			<span>Entries</span>
 		</div>
 	);
 };

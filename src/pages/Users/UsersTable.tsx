@@ -8,7 +8,7 @@ import Pagination from '../../components/Table/Pagination';
 import Filters from '../../components/Table/Filters/Filters';
 
 const UsersTable = () => {
-	const {setColumns, setData, limit, skip, setLoading} = useContext(
+	const {setColumns, setData, limit, skip, setLoading, filter} = useContext(
 		TableContext
 	) as ITableContext;
 	useEffect(() => {
@@ -21,7 +21,10 @@ const UsersTable = () => {
 			'Email',
 			'Username',
 			'BloodGroup',
-			'EyeColor'
+			'EyeColor',
+			'BirthDate',
+			'Phone',
+			'Role'
 		]);
 	}, []);
 	useEffect(() => {
@@ -29,9 +32,16 @@ const UsersTable = () => {
 
 		axios
 			.get<any, AxiosRequestConfig<UserGetAllResponse>>(
-				'https://dummyjson.com/users',
+				'https://dummyjson.com/users' +
+					(filter.property && filter.value ? '/filter' : ''),
 				{
-					params: {limit, skip}
+					params: {
+						limit,
+						skip,
+						...(filter.property && filter.value
+							? {key: filter.property, value: filter.value}
+							: {})
+					}
 				}
 			)
 			.then(response => {
@@ -45,14 +55,17 @@ const UsersTable = () => {
 						v.email,
 						v.username,
 						v.bloodGroup,
-						v.eyeColor
+						v.eyeColor,
+						v.birthDate,
+						v.phone,
+						v.role,
 					]) ?? []
 				);
 				console.log(response.data);
 				setLoading(false);
 			})
 			.catch(console.error);
-	}, [ limit, skip]);
+	}, [limit, skip, filter]);
 	return (
 		<>
 			<Filters />

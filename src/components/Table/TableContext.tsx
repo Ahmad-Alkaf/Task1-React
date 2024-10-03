@@ -1,5 +1,5 @@
 import React, {createContext, PropsWithChildren, useState} from 'react';
-import {ITableContext} from '../../types/ITableContext';
+import {Filter, ITableContext} from '../../types/ITableContext';
 
 const TableContext = createContext<ITableContext | null>(null);
 
@@ -11,6 +11,8 @@ const TableContextProvider = ({children}: PropsWithChildren) => {
 	const [data, setData] = useState<
 		(string | number | boolean | undefined | null)[][]
 	>([]);
+
+	const [filter, setFilter] = useState<Filter>({property: '', value: ''});
 	const [columns, setColumns] = useState<string[]>([]);
 	return (
 		<TableContext.Provider
@@ -27,6 +29,8 @@ const TableContextProvider = ({children}: PropsWithChildren) => {
 				setColumns,
 				loading,
 				setLoading,
+				filter,
+				setFilter,
 			}}>
 			{children}
 		</TableContext.Provider>

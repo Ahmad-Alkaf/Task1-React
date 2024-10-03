@@ -1,21 +1,11 @@
 .dropdown-btn {
 	display: flex;
-	padding: 0.3rem 1.3rem;
+	padding: 0.3rem 1.1rem;
 	align-items: center;
 	width: 100%;
 	background-color: #fff;
 	border:none;
 	cursor: pointer;
-}
-
-.rectangle {
-	/* padding-bottom:0.5rem; */
-	/* position: absolute; */
-
-	/* vertical-align: top; */
-	/* margin-top: -4px; */
-	transition-duration: 400ms;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dropdown {

@@ -46,10 +46,20 @@ code {
 .w-full {
 	width: 100%;
 }
-.px-2{
-	padding-left:0.4rem;
-	padding-right:0.4rem;
+.px-2 {
+	padding-left: 0.4rem;
+	padding-right: 0.4rem;
 }
-.flex{
-	display:flex;
+.px-4 {
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
+}
+.flex {
+	display: flex;
+}
+.bg-gray {
+	background-color: #ebebeb;
+}
+.gray {
+	color: #ebebeb;
 }
