@@ -2,7 +2,7 @@ import React from 'react';
 import './NoPage.css';
 const NoPage: React.FC = () => {
 	return (
-		<main className="no-page" style={{'fontFamily':'NeutraText'}}>
+		<main className="no-page" style={{fontFamily: 'NeutraText'}}>
 			<svg
 				version="1.1"
 				id="svg"
@@ -237,6 +237,10 @@ const NoPage: React.FC = () => {
 				/>
 			</svg>
 			<h3 className="text-center text-gray">Page Not Found</h3>
+			<h4 className="text-center text-gray">
+				Go to: <a href="/users">Users</a>,{' '}
+				<a href="/products">Products</a>
+			</h4>
 		</main>
 	);
 };
