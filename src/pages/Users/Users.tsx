@@ -1,11 +1,12 @@
 import React from 'react';
 import {TableContextProvider} from '../../components/Table/TableContext';
 import UsersTable from './UsersTable';
+import PagePath from '../../components/PagePath/PagePath';
 
 const Users: React.FC = () => {
 	return (
 		<div>
-			<h2>Home / {window.location.pathname.replaceAll('/', '')}</h2>
+			<PagePath/>
 			<TableContextProvider>
 				<UsersTable />
 			</TableContextProvider>
