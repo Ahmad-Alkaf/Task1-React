@@ -1,0 +1,13 @@
+.table-cell-header,
+.table-cell-data {
+	padding: 0.5rem 0.8rem;
+	white-space: nowrap;
+
+	border: 2px solid #ebebeb;
+}
+.table-cell-header {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	text-transform: uppercase;
+	background-color: #c0e3e5;
+}
