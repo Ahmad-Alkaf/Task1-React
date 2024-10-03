@@ -1,5 +1,5 @@
 import React from 'react';
-import {Outlet, useOutlet} from 'react-router-dom';
+import {useOutlet} from 'react-router-dom';
 import NoPage from '../pages/404/NoPage';
 
 const Layout: React.FC = () => {

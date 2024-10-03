@@ -1,4 +1,4 @@
-import React, {useContext, useMemo, useState} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {TableContext} from '../TableContext';
 import {ITableContext} from '../../../types/ITableContext';
 import {usePagination} from '../../../utilities/hooks/usePagination';
@@ -28,7 +28,6 @@ const Pagination = () => {
 		setSkip(skip - limit);
 	}
 	function setPage(pageNumber: number) {
-		console.log({pageNumber});
 		setSkip((pageNumber - 1) * limit);
 	}
 

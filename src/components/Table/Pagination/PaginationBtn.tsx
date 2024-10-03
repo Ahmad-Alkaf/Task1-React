@@ -15,7 +15,6 @@ const PaginationBtn = ({
 			className="pagination-li"
 			onClick={e => {
 				if (!disable) onClick(e);
-				console.log(e);
 			}}>
 			{children}
 		</li>

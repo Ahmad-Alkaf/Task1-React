@@ -62,7 +62,6 @@ const UsersTable = () => {
 					]) ?? []
 				);
 				setTotal(response.data?.total ?? 0);
-				console.log(response.data);
 				setLoading(false);
 			})
 			.catch(console.error);
